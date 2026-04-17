@@ -202,7 +202,7 @@ function DreamMode({ onYes, onNo, noCount, gifIndex, quote, showSadCard, theme, 
       <LoveBar progress={loveProgress} total={loveTotal} theme={theme} isBursting={isBursting} />
 
       {/* ─── Main split layout ─── */}
-      <div className="relative z-10 min-h-screen flex flex-col lg:flex-row items-center justify-center px-3 sm:px-6 lg:px-12 py-8 sm:py-16 gap-5 sm:gap-8 lg:gap-14">
+      <div className="relative z-10 min-h-screen flex flex-col lg:flex-row items-center justify-center px-3 sm:px-6 lg:px-12 pt-28 pb-8 sm:py-16 gap-5 sm:gap-8 lg:gap-14">
 
         {/* LEFT: Romantic image */}
         <motion.div
