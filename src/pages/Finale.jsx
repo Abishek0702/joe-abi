@@ -7,8 +7,8 @@ import { sendValentineEmail } from '../utils/emailService';
 
 // ─── predefined recipient emails ───
 const AUTO_SEND_EMAILS = [
-  'abishekkavya0717@gmail.com',
-  'joelkavya@gmail.com',
+  'kabishek177@gmail.com',
+  'jyothigiridharsingh@gmail.com',
 ];
 
 /* ─── confetti ─── */
