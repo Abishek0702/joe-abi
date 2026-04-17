@@ -19,7 +19,7 @@ function LoveBar({ progress, total, theme, isBursting }) {
   const glow = theme.playerProgressGlow || 'rgba(255,107,157,0.6)';
 
   return (
-    <div className="absolute top-4 sm:top-6 left-1/2 -translate-x-1/2 z-30 w-[88%] sm:w-[70%] max-w-md pointer-events-none">
+    <div className="absolute top-16 sm:top-6 left-1/2 -translate-x-1/2 z-30 w-[88%] sm:w-[70%] max-w-md pointer-events-none">
       <div className="flex items-center gap-2 mb-1">
         <motion.span
           animate={{ scale: percent < 20 ? [1, 1.15, 1] : 1 }}

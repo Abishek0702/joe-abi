@@ -56,7 +56,7 @@ export async function sendValentineEmail({
   const templateParams = {
     to_email: toEmail,
     love_quote: 'Our love is beautiful, nama kadaisi vara ipadiye happy ah irupom',
-    image_url: '/images/WhatsApp Image 2026-04-16 at 7.28.51 PM.jpeg',
+    image_url: 'https://joe-abi.vercel.app/images/WhatsApp%20Image%202026-04-16%20at%207.28.51%20PM.jpeg',
     image_tag: '#OurLove',
     timestamp: new Date().toLocaleString('en-US', {
       weekday: 'long',
