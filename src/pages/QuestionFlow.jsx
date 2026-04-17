@@ -9,6 +9,112 @@ import DreamyBackground from '../components/DreamyBackground';
 
 const DREAM_QUESTION_INDEX = romanticQuestions.length - 1; // last question
 
+/* ═══════════════════════════════════════════════ */
+/*                 LOVE PROGRESS BAR                */
+/* ═══════════════════════════════════════════════ */
+function LoveBar({ progress, total, theme, isBursting }) {
+  const percent = isBursting ? 100 : Math.min(100, (progress / total) * 100);
+  const fromColor = theme.playerProgressFrom || '#ff6b9d';
+  const toColor = theme.playerProgressTo || '#ff4785';
+  const glow = theme.playerProgressGlow || 'rgba(255,107,157,0.6)';
+
+  return (
+    <div className="absolute top-4 sm:top-6 left-1/2 -translate-x-1/2 z-30 w-[88%] sm:w-[70%] max-w-md pointer-events-none">
+      <div className="flex items-center gap-2 mb-1">
+        <motion.span
+          animate={{ scale: percent < 20 ? [1, 1.15, 1] : 1 }}
+          transition={{ duration: 1, repeat: Infinity }}
+          className="text-base sm:text-lg select-none"
+          style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.3))' }}
+        >
+          💔
+        </motion.span>
+
+        <div
+          className="flex-1 h-3 sm:h-3.5 rounded-full border border-white/40 relative overflow-visible backdrop-blur-sm"
+          style={{ background: 'rgba(255,255,255,0.2)' }}
+        >
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${percent}%` }}
+            transition={{ duration: isBursting ? 0.6 : 1, ease: 'easeOut' }}
+            className="h-full rounded-full relative"
+            style={{
+              background: `linear-gradient(90deg, ${fromColor}, ${toColor})`,
+              boxShadow: `0 0 12px ${glow}, inset 0 1px 2px rgba(255,255,255,0.5)`,
+            }}
+          >
+            {/* Moving cupid at tip */}
+            <motion.img
+              src="https://media.tenor.com/DB2Vd6YBbQAAAAAi/cupid.gif"
+              alt="Cupid"
+              animate={isBursting ? { scale: [1, 2, 0.5], opacity: [1, 1, 0] } : { scale: [1, 1.15, 1], y: [0, -3, 0] }}
+              transition={isBursting ? { duration: 0.8, ease: 'easeOut' } : { duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute pointer-events-none select-none"
+              style={{
+                right: '-24px',
+                top: '-22px',
+                width: '44px',
+                height: '44px',
+                filter: `drop-shadow(0 2px 6px ${glow})`,
+                transform: 'scaleX(-1)',
+              }}
+              draggable={false}
+            />
+          </motion.div>
+
+          {/* Burst explosion — hearts flying out */}
+          <AnimatePresence>
+            {isBursting && Array.from({ length: 14 }).map((_, i) => {
+              const angle = (i / 14) * Math.PI * 2;
+              const dist = 80 + Math.random() * 60;
+              return (
+                <motion.span
+                  key={`burst-${i}`}
+                  initial={{ x: 0, y: 0, opacity: 0, scale: 0 }}
+                  animate={{
+                    x: Math.cos(angle) * dist,
+                    y: Math.sin(angle) * dist,
+                    opacity: [0, 1, 0],
+                    scale: [0, 1.4, 0.5],
+                  }}
+                  transition={{ duration: 1.2, delay: 0.3 + i * 0.04, ease: 'easeOut' }}
+                  className="absolute select-none"
+                  style={{
+                    right: '-10px',
+                    top: '-4px',
+                    fontSize: '22px',
+                    filter: `drop-shadow(0 2px 4px ${glow})`,
+                  }}
+                >
+                  {theme.heartEmoji}
+                </motion.span>
+              );
+            })}
+          </AnimatePresence>
+        </div>
+
+        <motion.span
+          animate={{ scale: percent >= 80 ? [1, 1.25, 1] : 1, rotate: percent >= 80 ? [0, -8, 8, 0] : 0 }}
+          transition={{ duration: 1, repeat: Infinity }}
+          className="text-base sm:text-lg select-none"
+          style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.3))' }}
+        >
+          {theme.heartEmoji}
+        </motion.span>
+      </div>
+      <motion.p
+        animate={isBursting ? { scale: [1, 1.3, 1], opacity: [1, 1, 0.8] } : {}}
+        transition={{ duration: 0.8 }}
+        className="text-center text-xs sm:text-sm font-love italic"
+        style={{ color: 'rgba(255,255,255,0.9)', textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}
+      >
+        {isBursting ? 'Love overflowing... 💥💖' : `Love Level — ${Math.round(percent)}%`}
+      </motion.p>
+    </div>
+  );
+}
+
 const sadGifs = [
   'https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGY3ZnYyaWVjaGhheGtqemhrODV5c2Rvc3N0eHFoMmloMm9hMWFyYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Y4z9olnoVl5QI/200w.gif',
   'https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyeDg0c3I3MmdyeWVibzExNHN1bGxwMXg3aTBtNDd5ZmxiaThxdzZiaSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/W4RizlO6qZWQRYw9mb/giphy.gif',
@@ -41,7 +147,7 @@ const teaseMessages = [
 /* ═══════════════════════════════════════════════ */
 /*         DREAM MODE (special last question)      */
 /* ═══════════════════════════════════════════════ */
-function DreamMode({ onYes, onNo, noCount, gifIndex, quote, showSadCard, theme, teaseMsg }) {
+function DreamMode({ onYes, onNo, noCount, gifIndex, quote, showSadCard, theme, teaseMsg, loveProgress, loveTotal, isBursting }) {
   const yesScale = 1 + noCount * 0.2;
   const noBtnRef = useRef(null);
   const [noFixed, setNoFixed] = useState(false);
@@ -92,19 +198,8 @@ function DreamMode({ onYes, onNo, noCount, gifIndex, quote, showSadCard, theme, 
         </motion.div>
       ))}
 
-      {/* ─── Progress dots ─── */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-        {romanticQuestions.map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{ scale: i === DREAM_QUESTION_INDEX ? [1, 1.3, 1] : 1 }}
-            transition={i === DREAM_QUESTION_INDEX ? { duration: 1.5, repeat: Infinity } : {}}
-            className={`w-3 h-3 rounded-full ${
-              i <= DREAM_QUESTION_INDEX ? theme.dotActive : 'bg-white/30'
-            }`}
-          />
-        ))}
-      </div>
+      {/* ─── Love Progress Bar ─── */}
+      <LoveBar progress={loveProgress} total={loveTotal} theme={theme} isBursting={isBursting} />
 
       {/* ─── Main split layout ─── */}
       <div className="relative z-10 min-h-screen flex flex-col lg:flex-row items-center justify-center px-3 sm:px-6 lg:px-12 py-8 sm:py-16 gap-5 sm:gap-8 lg:gap-14">
@@ -343,7 +438,7 @@ const screenEffects = [
   { emoji: '😂', hearts: 12, sparkles: true, petals: true, glow: true, intensity: 'high' },
 ];
 
-function NormalMode({ questionIndex, question, onYes, onNo, noCount, gifIndex, quote, showSadCard, theme }) {
+function NormalMode({ questionIndex, question, onYes, onNo, noCount, gifIndex, quote, showSadCard, theme, loveProgress, loveTotal }) {
   const fx = screenEffects[questionIndex % screenEffects.length];
 
   return (
@@ -353,6 +448,78 @@ function NormalMode({ questionIndex, question, onYes, onNo, noCount, gifIndex, q
     >
 
       <DreamyBackground showCupid={false} intensity={fx.intensity} />
+
+      {/* ═══ Water Bubble Heart — Big, right side ═══ */}
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{ right: '10%', top: '12%', zIndex: 2, opacity: 0.35 }}
+        animate={{
+          y: [0, -20, 0, -12, 0],
+          x: [0, 5, -3, 6, 0],
+          scale: [1, 1.02, 0.98, 1.01, 1],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <svg viewBox="0 0 100 100" width="420" height="420">
+          <defs>
+            <radialGradient id={`qBubbleGrad-${questionIndex}`} cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
+              <stop offset="35%" stopColor="rgba(200,220,255,0.22)" />
+              <stop offset="60%" stopColor="rgba(180,210,255,0.12)" />
+              <stop offset="100%" stopColor="rgba(160,200,255,0.04)" />
+            </radialGradient>
+            <radialGradient id={`qBubbleShine-${questionIndex}`} cx="30%" cy="25%" r="30%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.85)" />
+              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+            </radialGradient>
+          </defs>
+          <path
+            d="M50 90 C50 90 8 58 8 32 C8 16 18 6 34 6 C42 6 48 12 50 18 C52 12 58 6 66 6 C82 6 92 16 92 32 C92 58 50 90 50 90Z"
+            fill={`url(#qBubbleGrad-${questionIndex})`}
+            stroke="rgba(255,255,255,0.3)"
+            strokeWidth="0.8"
+          />
+          <ellipse cx="34" cy="26" rx="14" ry="9" fill={`url(#qBubbleShine-${questionIndex})`} transform="rotate(-20, 34, 26)" />
+          <circle cx="62" cy="38" r="4" fill="rgba(255,255,255,0.35)" />
+          <ellipse cx="50" cy="72" rx="18" ry="6" fill="rgba(255,255,255,0.08)" />
+        </svg>
+      </motion.div>
+
+      {/* ═══ Water Bubble Heart — Smaller, left side ═══ */}
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{ left: '6%', top: '35%', zIndex: 2, opacity: 0.3 }}
+        animate={{
+          y: [0, -14, 0, -8, 0],
+          x: [0, -3, 2, -4, 0],
+          scale: [1, 1.03, 0.97, 1.02, 1],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+      >
+        <svg viewBox="0 0 100 100" width="280" height="280">
+          <defs>
+            <radialGradient id={`qBubbleGrad2-${questionIndex}`} cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
+              <stop offset="35%" stopColor="rgba(200,220,255,0.22)" />
+              <stop offset="60%" stopColor="rgba(180,210,255,0.12)" />
+              <stop offset="100%" stopColor="rgba(160,200,255,0.04)" />
+            </radialGradient>
+            <radialGradient id={`qBubbleShine2-${questionIndex}`} cx="30%" cy="25%" r="30%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.85)" />
+              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+            </radialGradient>
+          </defs>
+          <path
+            d="M50 90 C50 90 8 58 8 32 C8 16 18 6 34 6 C42 6 48 12 50 18 C52 12 58 6 66 6 C82 6 92 16 92 32 C92 58 50 90 50 90Z"
+            fill={`url(#qBubbleGrad2-${questionIndex})`}
+            stroke="rgba(255,255,255,0.3)"
+            strokeWidth="0.8"
+          />
+          <ellipse cx="34" cy="26" rx="14" ry="9" fill={`url(#qBubbleShine2-${questionIndex})`} transform="rotate(-20, 34, 26)" />
+          <circle cx="62" cy="38" r="4" fill="rgba(255,255,255,0.35)" />
+          <ellipse cx="50" cy="72" rx="18" ry="6" fill="rgba(255,255,255,0.08)" />
+        </svg>
+      </motion.div>
 
       {/* ═══ Floating Hearts (amount increases per screen) ═══ */}
       {Array.from({ length: fx.hearts }).map((_, i) => (
@@ -432,19 +599,8 @@ function NormalMode({ questionIndex, question, onYes, onNo, noCount, gifIndex, q
         </motion.div>
       ))}
 
-      {/* Progress dots */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-        {romanticQuestions.map((_, i) => (
-          <motion.div
-            key={i}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              i <= questionIndex ? theme.dotActive : theme.dotInactive
-            }`}
-            animate={i === questionIndex ? { scale: [1, 1.3, 1] } : {}}
-            transition={i === questionIndex ? { duration: 1.5, repeat: Infinity } : {}}
-          />
-        ))}
-      </div>
+      {/* Love Progress Bar */}
+      <LoveBar progress={loveProgress} total={loveTotal} theme={theme} isBursting={false} />
 
       {/* Main emoji — with heartbeat on screen 2+ */}
       <motion.div
@@ -950,17 +1106,21 @@ export default function QuestionFlow() {
   const [showSadCard, setShowSadCard] = useState(false);
   const [teaseMsg, setTeaseMsg] = useState('');
   const [showProposal, setShowProposal] = useState(false);
+  const [isBursting, setIsBursting] = useState(false);
   const { setLastQuote } = useValentine();
 
   const question = romanticQuestions[questionIndex];
   const isLast = questionIndex >= romanticQuestions.length - 1;
   const isDreamMode = questionIndex === DREAM_QUESTION_INDEX;
+  const loveTotal = romanticQuestions.length;
+  const loveProgress = questionIndex + 1;
 
   const handleYes = () => {
     setLastQuote(quote || question);
     if (isLast) {
-      // Show proposal scene first, then navigate
-      setShowProposal(true);
+      // Fill bar to 100% + burst, then show proposal scene
+      setIsBursting(true);
+      setTimeout(() => setShowProposal(true), 1500);
     } else {
       navigate(`/questions/${questionIndex + 2}`);
     }
@@ -1009,6 +1169,9 @@ export default function QuestionFlow() {
               showSadCard={showSadCard}
               theme={theme}
               teaseMsg={teaseMsg}
+              loveProgress={loveProgress}
+              loveTotal={loveTotal}
+              isBursting={isBursting}
             />
           </motion.div>
         ) : (
@@ -1029,6 +1192,8 @@ export default function QuestionFlow() {
               quote={quote}
               showSadCard={showSadCard}
               theme={theme}
+              loveProgress={loveProgress}
+              loveTotal={loveTotal}
             />
           </motion.div>
         )}

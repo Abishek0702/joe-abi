@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import FloatingHearts from './components/FloatingHearts';
@@ -11,6 +12,14 @@ import Gallery from './pages/Gallery';
 import VideoPage from './pages/VideoPage';
 import QuestionFlow from './pages/QuestionFlow';
 import Finale from './pages/Finale';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [pathname]);
+  return null;
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -35,6 +44,7 @@ export default function App() {
     <Router>
       <ThemeProvider>
         <ValentineProvider>
+          <ScrollToTop />
           <FloatingHearts />
           <ThemeToggle />
           <AnimatedRoutes />

@@ -122,9 +122,9 @@ export default function Gallery() {
           transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
         >
           <div className="relative" style={{ width: isMobile ? 100 : 300, height: isMobile ? 35 : 110 }}>
-            <div style={{ position: 'absolute', left: '0%', top: '30%', width: '45%', height: '70%', borderRadius: '50%', background: 'rgba(255,255,255,0.92)', boxShadow: 'inset -4px -4px 10px rgba(200,210,230,0.3)' }} />
-            <div style={{ position: 'absolute', left: '20%', top: '0%', width: '55%', height: '85%', borderRadius: '50%', background: 'rgba(255,255,255,0.95)', boxShadow: 'inset -4px -4px 10px rgba(200,210,230,0.3)' }} />
-            <div style={{ position: 'absolute', left: '45%', top: '25%', width: '50%', height: '75%', borderRadius: '50%', background: 'rgba(255,255,255,0.9)', boxShadow: 'inset -4px -4px 10px rgba(200,210,230,0.3)' }} />
+            <div style={{ position: 'absolute', left: '0%', top: '30%', width: '45%', height: '70%', borderRadius: '50%', background: 'rgba(230,240,255,1)', boxShadow: 'inset -6px -6px 14px rgba(150,170,200,0.5), 0 4px 18px rgba(120,140,180,0.35)' }} />
+            <div style={{ position: 'absolute', left: '20%', top: '0%', width: '55%', height: '85%', borderRadius: '50%', background: 'rgba(240,248,255,1)', boxShadow: 'inset -6px -6px 14px rgba(150,170,200,0.5), 0 4px 18px rgba(120,140,180,0.35)' }} />
+            <div style={{ position: 'absolute', left: '45%', top: '25%', width: '50%', height: '75%', borderRadius: '50%', background: 'rgba(225,235,252,1)', boxShadow: 'inset -6px -6px 14px rgba(150,170,200,0.5), 0 4px 18px rgba(120,140,180,0.35)' }} />
           </div>
         </motion.div>
 
@@ -136,9 +136,9 @@ export default function Gallery() {
           transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
         >
           <div className="relative" style={{ width: isMobile ? 80 : 200, height: isMobile ? 28 : 75 }}>
-            <div style={{ position: 'absolute', left: '0%', top: '30%', width: '50%', height: '70%', borderRadius: '50%', background: 'rgba(255,255,255,0.88)', boxShadow: 'inset -3px -3px 8px rgba(200,210,230,0.3)' }} />
-            <div style={{ position: 'absolute', left: '22%', top: '0%', width: '55%', height: '90%', borderRadius: '50%', background: 'rgba(255,255,255,0.92)', boxShadow: 'inset -3px -3px 8px rgba(200,210,230,0.3)' }} />
-            <div style={{ position: 'absolute', left: '48%', top: '25%', width: '48%', height: '72%', borderRadius: '50%', background: 'rgba(255,255,255,0.86)', boxShadow: 'inset -3px -3px 8px rgba(200,210,230,0.3)' }} />
+            <div style={{ position: 'absolute', left: '0%', top: '30%', width: '50%', height: '70%', borderRadius: '50%', background: 'rgba(228,238,254,1)', boxShadow: 'inset -5px -5px 12px rgba(150,170,200,0.5), 0 4px 16px rgba(120,140,180,0.35)' }} />
+            <div style={{ position: 'absolute', left: '22%', top: '0%', width: '55%', height: '90%', borderRadius: '50%', background: 'rgba(240,248,255,1)', boxShadow: 'inset -5px -5px 12px rgba(150,170,200,0.5), 0 4px 16px rgba(120,140,180,0.35)' }} />
+            <div style={{ position: 'absolute', left: '48%', top: '25%', width: '48%', height: '72%', borderRadius: '50%', background: 'rgba(222,233,250,1)', boxShadow: 'inset -5px -5px 12px rgba(150,170,200,0.5), 0 4px 16px rgba(120,140,180,0.35)' }} />
           </div>
         </motion.div>
 
@@ -150,9 +150,9 @@ export default function Gallery() {
           transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         >
           <div className="relative" style={{ width: isMobile ? 100 : 280, height: isMobile ? 35 : 100 }}>
-            <div style={{ position: 'absolute', left: '5%', top: '28%', width: '48%', height: '72%', borderRadius: '50%', background: 'rgba(255,255,255,0.9)', boxShadow: 'inset 4px -4px 10px rgba(200,210,230,0.3)' }} />
-            <div style={{ position: 'absolute', left: '25%', top: '0%', width: '52%', height: '88%', borderRadius: '50%', background: 'rgba(255,255,255,0.95)', boxShadow: 'inset 4px -4px 10px rgba(200,210,230,0.3)' }} />
-            <div style={{ position: 'absolute', left: '50%', top: '22%', width: '48%', height: '70%', borderRadius: '50%', background: 'rgba(255,255,255,0.88)', boxShadow: 'inset 4px -4px 10px rgba(200,210,230,0.3)' }} />
+            <div style={{ position: 'absolute', left: '5%', top: '28%', width: '48%', height: '72%', borderRadius: '50%', background: 'rgba(230,240,255,1)', boxShadow: 'inset 6px -6px 14px rgba(150,170,200,0.5), 0 4px 18px rgba(120,140,180,0.35)' }} />
+            <div style={{ position: 'absolute', left: '25%', top: '0%', width: '52%', height: '88%', borderRadius: '50%', background: 'rgba(240,248,255,1)', boxShadow: 'inset 6px -6px 14px rgba(150,170,200,0.5), 0 4px 18px rgba(120,140,180,0.35)' }} />
+            <div style={{ position: 'absolute', left: '50%', top: '22%', width: '48%', height: '70%', borderRadius: '50%', background: 'rgba(225,235,252,1)', boxShadow: 'inset 6px -6px 14px rgba(150,170,200,0.5), 0 4px 18px rgba(120,140,180,0.35)' }} />
           </div>
         </motion.div>
 
@@ -164,9 +164,9 @@ export default function Gallery() {
           transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
         >
           <div className="relative" style={{ width: isMobile ? 75 : 180, height: isMobile ? 26 : 65 }}>
-            <div style={{ position: 'absolute', left: '0%', top: '32%', width: '48%', height: '68%', borderRadius: '50%', background: 'rgba(255,255,255,0.85)', boxShadow: 'inset 3px -3px 8px rgba(200,210,230,0.3)' }} />
-            <div style={{ position: 'absolute', left: '20%', top: '0%', width: '55%', height: '88%', borderRadius: '50%', background: 'rgba(255,255,255,0.9)', boxShadow: 'inset 3px -3px 8px rgba(200,210,230,0.3)' }} />
-            <div style={{ position: 'absolute', left: '48%', top: '28%', width: '48%', height: '68%', borderRadius: '50%', background: 'rgba(255,255,255,0.82)', boxShadow: 'inset 3px -3px 8px rgba(200,210,230,0.3)' }} />
+            <div style={{ position: 'absolute', left: '0%', top: '32%', width: '48%', height: '68%', borderRadius: '50%', background: 'rgba(225,235,252,1)', boxShadow: 'inset 5px -5px 12px rgba(150,170,200,0.5), 0 4px 16px rgba(120,140,180,0.35)' }} />
+            <div style={{ position: 'absolute', left: '20%', top: '0%', width: '55%', height: '88%', borderRadius: '50%', background: 'rgba(240,248,255,1)', boxShadow: 'inset 5px -5px 12px rgba(150,170,200,0.5), 0 4px 16px rgba(120,140,180,0.35)' }} />
+            <div style={{ position: 'absolute', left: '48%', top: '28%', width: '48%', height: '68%', borderRadius: '50%', background: 'rgba(220,232,250,1)', boxShadow: 'inset 5px -5px 12px rgba(150,170,200,0.5), 0 4px 16px rgba(120,140,180,0.35)' }} />
           </div>
         </motion.div>
 
@@ -178,9 +178,9 @@ export default function Gallery() {
           transition={{ duration: 26, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         >
           <div className="relative" style={{ width: isMobile ? 130 : 240, height: isMobile ? 48 : 85 }}>
-            <div style={{ position: 'absolute', left: '0%', top: '30%', width: '45%', height: '70%', borderRadius: '50%', background: 'rgba(255,255,255,0.82)', boxShadow: 'inset -3px -3px 8px rgba(200,210,230,0.25)' }} />
-            <div style={{ position: 'absolute', left: '20%', top: '0%', width: '55%', height: '85%', borderRadius: '50%', background: 'rgba(255,255,255,0.88)', boxShadow: 'inset -3px -3px 8px rgba(200,210,230,0.25)' }} />
-            <div style={{ position: 'absolute', left: '48%', top: '25%', width: '48%', height: '72%', borderRadius: '50%', background: 'rgba(255,255,255,0.8)', boxShadow: 'inset -3px -3px 8px rgba(200,210,230,0.25)' }} />
+            <div style={{ position: 'absolute', left: '0%', top: '30%', width: '45%', height: '70%', borderRadius: '50%', background: 'rgba(222,232,250,1)', boxShadow: 'inset -5px -5px 12px rgba(150,170,200,0.45), 0 4px 16px rgba(120,140,180,0.3)' }} />
+            <div style={{ position: 'absolute', left: '20%', top: '0%', width: '55%', height: '85%', borderRadius: '50%', background: 'rgba(236,244,255,1)', boxShadow: 'inset -5px -5px 12px rgba(150,170,200,0.45), 0 4px 16px rgba(120,140,180,0.3)' }} />
+            <div style={{ position: 'absolute', left: '48%', top: '25%', width: '48%', height: '72%', borderRadius: '50%', background: 'rgba(218,228,248,1)', boxShadow: 'inset -5px -5px 12px rgba(150,170,200,0.45), 0 4px 16px rgba(120,140,180,0.3)' }} />
           </div>
         </motion.div>
 
@@ -192,9 +192,9 @@ export default function Gallery() {
           transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
         >
           <div className="relative" style={{ width: isMobile ? 130 : 230, height: isMobile ? 48 : 82 }}>
-            <div style={{ position: 'absolute', left: '5%', top: '28%', width: '46%', height: '70%', borderRadius: '50%', background: 'rgba(255,255,255,0.82)', boxShadow: 'inset 3px -3px 8px rgba(200,210,230,0.25)' }} />
-            <div style={{ position: 'absolute', left: '24%', top: '0%', width: '52%', height: '88%', borderRadius: '50%', background: 'rgba(255,255,255,0.88)', boxShadow: 'inset 3px -3px 8px rgba(200,210,230,0.25)' }} />
-            <div style={{ position: 'absolute', left: '50%', top: '24%', width: '46%', height: '70%', borderRadius: '50%', background: 'rgba(255,255,255,0.8)', boxShadow: 'inset 3px -3px 8px rgba(200,210,230,0.25)' }} />
+            <div style={{ position: 'absolute', left: '5%', top: '28%', width: '46%', height: '70%', borderRadius: '50%', background: 'rgba(222,232,250,1)', boxShadow: 'inset 5px -5px 12px rgba(150,170,200,0.45), 0 4px 16px rgba(120,140,180,0.3)' }} />
+            <div style={{ position: 'absolute', left: '24%', top: '0%', width: '52%', height: '88%', borderRadius: '50%', background: 'rgba(236,244,255,1)', boxShadow: 'inset 5px -5px 12px rgba(150,170,200,0.45), 0 4px 16px rgba(120,140,180,0.3)' }} />
+            <div style={{ position: 'absolute', left: '50%', top: '24%', width: '46%', height: '70%', borderRadius: '50%', background: 'rgba(218,228,248,1)', boxShadow: 'inset 5px -5px 12px rgba(150,170,200,0.45), 0 4px 16px rgba(120,140,180,0.3)' }} />
           </div>
         </motion.div>
 
@@ -206,10 +206,10 @@ export default function Gallery() {
           transition={{ duration: 30, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         >
           <div className="relative" style={{ width: isMobile ? 200 : 380, height: isMobile ? 70 : 130 }}>
-            <div style={{ position: 'absolute', left: '0%', top: '30%', width: '40%', height: '70%', borderRadius: '50%', background: 'rgba(255,255,255,0.5)', boxShadow: 'inset -3px -3px 10px rgba(200,210,230,0.15)' }} />
-            <div style={{ position: 'absolute', left: '18%', top: '0%', width: '50%', height: '85%', borderRadius: '50%', background: 'rgba(255,255,255,0.55)', boxShadow: 'inset -3px -3px 10px rgba(200,210,230,0.15)' }} />
-            <div style={{ position: 'absolute', left: '42%', top: '20%', width: '45%', height: '75%', borderRadius: '50%', background: 'rgba(255,255,255,0.48)', boxShadow: 'inset -3px -3px 10px rgba(200,210,230,0.15)' }} />
-            <div style={{ position: 'absolute', left: '65%', top: '30%', width: '35%', height: '65%', borderRadius: '50%', background: 'rgba(255,255,255,0.42)', boxShadow: 'inset -3px -3px 10px rgba(200,210,230,0.15)' }} />
+            <div style={{ position: 'absolute', left: '0%', top: '30%', width: '40%', height: '70%', borderRadius: '50%', background: 'rgba(215,228,250,0.85)', boxShadow: 'inset -4px -4px 12px rgba(150,170,200,0.35), 0 4px 20px rgba(120,140,180,0.25)' }} />
+            <div style={{ position: 'absolute', left: '18%', top: '0%', width: '50%', height: '85%', borderRadius: '50%', background: 'rgba(228,238,252,0.88)', boxShadow: 'inset -4px -4px 12px rgba(150,170,200,0.35), 0 4px 20px rgba(120,140,180,0.25)' }} />
+            <div style={{ position: 'absolute', left: '42%', top: '20%', width: '45%', height: '75%', borderRadius: '50%', background: 'rgba(210,224,248,0.82)', boxShadow: 'inset -4px -4px 12px rgba(150,170,200,0.35), 0 4px 20px rgba(120,140,180,0.25)' }} />
+            <div style={{ position: 'absolute', left: '65%', top: '30%', width: '35%', height: '65%', borderRadius: '50%', background: 'rgba(205,220,245,0.8)', boxShadow: 'inset -4px -4px 12px rgba(150,170,200,0.35), 0 4px 20px rgba(120,140,180,0.25)' }} />
           </div>
         </motion.div>
 
