@@ -194,7 +194,7 @@ export default function VideoPage() {
                 </motion.span>
               ))}
 
-              <audio ref={audioRef} src="/images/Snehidhane.mp3" preload="metadata" />
+              <audio ref={audioRef} src="/images/Kadhaippoma.mp3" preload="metadata" />
 
               {/* Spinning disc + title */}
               <div className="flex flex-col items-center gap-4 sm:gap-5 relative z-10">
@@ -212,7 +212,7 @@ export default function VideoPage() {
                 </motion.div>
 
                 <div className="text-center">
-                  <h3 className="font-love text-2xl sm:text-3xl text-gray-800">Snehidhane</h3>
+                  <h3 className="font-love text-2xl sm:text-3xl text-gray-800">Kadhaippoma</h3>
                   <p className="text-gray-500 italic text-sm sm:text-base font-love-body">Our Song 🎶</p>
                 </div>
 
